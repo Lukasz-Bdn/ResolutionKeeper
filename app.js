@@ -5,12 +5,13 @@ var express = require("express"),
     flash = require("connect-flash"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
-    methodOverride = require("method-override");
+    methodOverride = require("method-override"),
+    User = require("./models/user");
     
 var indexRoutes = require("./routes/index");
 
-// mongoose.connect(process.env.DATABASEURL);
-mongoose.connect("mongodb://localhost/keeper");
+// mongoose.connect("mongodb://localhost/keeper");
+mongoose.connect(process.env.DATABASEURL);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -18,7 +19,7 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 app.use(require("express-session")({
-    secret: "blablabla",
+    secret: "Great app this is indeed",
     resave: false,
     saveUninitialized: false
 }));
