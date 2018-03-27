@@ -8,23 +8,24 @@
         <div class="form-group col-md-6">
           <label for="username">Username (min 6 characters):</label>
           <input type="text" class="form-control" id="Username" placeholder="Username" 
-            name="username" minlength="6">
+            name="username" minlength="6" required>
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email address (optional for login/password recovery):</label>
-          <input type="text" class="form-control" id="email" placeholder="john.doe@gmail.com" name="email">
+          <input type="text" class="form-control" id="email" placeholder="john.doe@gmail.com" 
+            name="email" optional>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="password">Password (min 6 characters):</label>
           <input type="password" class="form-control" id="password" placeholder="Password" 
-            name="password" minlength="6">
+            name="password" minlength="6" required>
         </div>
         <div class="form-group col-md-6">
           <label for="password">Confirm password:</label>
           <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" 
-            name="confirmPassword" minlength="6">
+            name="confirmPassword" minlength="6" required>
         </div>
       </div>
       <button type="submit" class="btn btn-info">Register</button>
