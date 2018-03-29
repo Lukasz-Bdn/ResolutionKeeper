@@ -10,6 +10,7 @@ var express = require("express"),
     
 var indexRoutes = require("./routes/index");
 var homeRoutes = require("./routes/home");
+var journalRoutes = require("./routes/journal");
 
 mongoose.connect("mongodb://localhost/keeper");
 // mongoose.connect(process.env.DATABASEURL);
@@ -39,6 +40,7 @@ app.use(function(req,res,next) {
 
 app.use("/", indexRoutes);
 app.use("/home", homeRoutes);
+app.use("/journal", journalRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Resolution Keeper started...");
