@@ -8,4 +8,13 @@ router.get("/", function(req, res) {
     res.render("journal/journal");
 });
 
+router.get("/new", function(req, res) {
+    res.render("journal/new");
+});
+
+router.post("/", function(req, res) {
+   console.log(req.body.journal);
+   res.redirect("/journal/new");
+});
+
 module.exports = router;
