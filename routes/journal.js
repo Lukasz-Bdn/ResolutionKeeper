@@ -13,7 +13,14 @@ router.get("/new", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-   console.log(req.body.journal);
+    console.log(req.body.journal);
+    var newJournal = req.body.journal;
+    if (req.body.formPrivate === "on") {
+       req.body.journal.private = true;
+    } else {
+        req.body.journal.private = false;
+    }
+    console.log(req.body.journal);
    res.redirect("/journal/new");
 });
 
