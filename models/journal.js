@@ -3,14 +3,15 @@ var mongoose = require("mongoose");
 var journalSchema = new mongoose.Schema({
     title: String,
     description: String,
-    started: Date,
+    created: Date,
     private: Boolean,
-    posts: [
-        {
+    author: {
+        id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ]
+            ref: "User"
+        },
+        username: String
+    },
 });
 
 module.exports = mongoose.model("Journal", journalSchema);

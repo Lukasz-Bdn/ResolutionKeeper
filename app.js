@@ -41,7 +41,7 @@ app.use(function(req,res,next) {
 
 app.use("/", indexRoutes);
 app.use("/home", homeRoutes);
-app.use("/journal", journalRoutes);
+app.use("/journals", journalRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Resolution Keeper started...");

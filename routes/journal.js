@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var Journal = require("../models/journal");
 var middleware = require("../middleware/middleware");
 
 router.get("/", function(req, res) {
@@ -13,15 +14,21 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    console.log(req.body.journal);
     var newJournal = req.body.journal;
-    if (req.body.formPrivate === "on") {
-       req.body.journal.private = true;
-    } else {
-        req.body.journal.private = false;
-    }
-    console.log(req.body.journal);
-   res.redirect("/journal/new");
+    req.body.journal.private = (req.body.formPrivate === "on");
+    newJournal.created = new Date();
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    newJournal.author = author;
+    Journal.create(newJournal, function(err, newlyCreatedJournal) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.redirect("/journals");
+        }
+    });
 });
 
 module.exports = router;
