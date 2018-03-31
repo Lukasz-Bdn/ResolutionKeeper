@@ -8,7 +8,7 @@ router.get("/", function(req, res) {
     res.render("journal/journal");
 });
 
-router.get("/new", function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
     res.render("journal/new");
 });
 
