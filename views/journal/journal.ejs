@@ -4,4 +4,12 @@
     <h1>Journal site</h1>
 </div>
 
+<div class="container">
+    <ul>
+        <% userJournals.forEach(function(journal) { %>
+            <li><%= journal.title %></li>
+        <% }); %>
+    </ul>
+</div>
+
 <% include ../partials/footer %>
