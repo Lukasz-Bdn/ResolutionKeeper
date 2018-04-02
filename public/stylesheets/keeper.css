@@ -24,6 +24,15 @@ body {
   border: 1px solid green;
 }
 
+.jumbotron {
+  background-color: #d0eeef;
+}
+
+div.card {
+  margin-bottom: 20px;
+  background-color: #d0eeef;
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */

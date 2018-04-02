@@ -6,16 +6,13 @@ var Journal = require("../models/journal");
 var middleware = require("../middleware/middleware");
 
 router.get("/", function(req, res) {
-    // console.log(req.user.username);
     Journal.find({'author.username': req.user.username}, function(err, userJournals) {
         if(err) {
             console.log(err);
         } else {
-            console.log(userJournals);
             res.render("journal/journal", {userJournals : userJournals});
         }
     });
-    // res.render("journal/journal");
 });
 
 router.get("/new", middleware.isLoggedIn, function(req, res) {
@@ -38,6 +35,10 @@ router.post("/", function(req, res) {
             res.redirect("/journals/");
         }
     });
+});
+
+router.get("/:journal_id/edit", function(req, res) {
+   res.send("edit path"); 
 });
 
 module.exports = router;
