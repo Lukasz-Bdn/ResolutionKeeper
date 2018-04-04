@@ -38,11 +38,11 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
     });
 });
 
-router.get("/:journal_id/edit", function(req, res) {
+router.get("/:journal_id/edit", middleware.checkJournalOwnership, function(req, res) {
    res.send("edit path"); 
 });
 
-router.get("/:journal_id/delete", function(req, res) {
+router.get("/:journal_id/delete", middleware.checkJournalOwnership, function(req, res) {
     Journal.findByIdAndRemove(req.params.journal_id, function(err) {
         if(err) {
             req.flash("error", "Cannot delete journal.");
