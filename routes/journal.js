@@ -5,21 +5,22 @@ var User = require("../models/user");
 var Journal = require("../models/journal");
 var middleware = require("../middleware/middleware");
 
-router.get("/", function(req, res) {
-    Journal.find({'author.username': req.user.username}, function(err, userJournals) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.render("journal/journal", {userJournals : userJournals});
-        }
-    });
+router.get("/", middleware.isLoggedIn, function(req, res) {
+        Journal.find({'author.username': req.user.username}, function(err, userJournals) {
+            if(err) {
+                console.log(err);
+                res.redirect("/");
+            } else {
+                res.render("journal/journal", {userJournals : userJournals});
+            }
+        });
 });
 
 router.get("/new", middleware.isLoggedIn, function(req, res) {
     res.render("journal/new");
 });
 
-router.post("/", function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
     var newJournal = req.body.journal;
     req.body.journal.private = (req.body.formPrivate === "on");
     newJournal.created = new Date();
@@ -39,6 +40,18 @@ router.post("/", function(req, res) {
 
 router.get("/:journal_id/edit", function(req, res) {
    res.send("edit path"); 
+});
+
+router.get("/:journal_id/delete", function(req, res) {
+    Journal.findByIdAndRemove(req.params.journal_id, function(err) {
+        if(err) {
+            req.flash("error", "Cannot delete journal.");
+            res.redirect("/journals");
+       } else {
+            req.flash("success", "Successfully deleted journal.");
+            res.redirect("/journals");
+       }
+   });
 });
 
 module.exports = router;

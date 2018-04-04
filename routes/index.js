@@ -4,7 +4,7 @@ var passport = require("passport");
 var User = require("../models/user");
 var middleware = require("../middleware/middleware");
 
-router.get("/", function(req, res) {
+router.get("/", function(req, res, err) {
     res.render("landing");
 });
 
