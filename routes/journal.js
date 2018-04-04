@@ -39,7 +39,27 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 });
 
 router.get("/:journal_id/edit", middleware.checkJournalOwnership, function(req, res) {
-   res.send("edit path"); 
+    Journal.findById(req.params.journal_id, function(err, foundJournal) {
+        if(err) {
+            req.flash("Journal not found");
+            res.redirect("/journals");
+        } else {
+            res.render("journal/edit", {journal : foundJournal});
+        }
+    });
+});
+
+router.put("/:journal_id", middleware.checkJournalOwnership, function(req, res) {
+    req.body.journal.private = (req.body.formPrivate === "on");
+    Journal.findByIdAndUpdate(req.params.journal_id, req.body.journal, 
+                                function(err, updatedJournal) {
+        if(err) {
+            req.flash("error", "You cannot edit this journal");
+            res.redirect("/journals");
+        } else {
+            res.redirect("/journals/");
+        }
+    });
 });
 
 router.get("/:journal_id/delete", middleware.checkJournalOwnership, function(req, res) {
