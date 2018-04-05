@@ -1,45 +1,38 @@
 <% include ../partials/header %>
 
 <div class="container">
-
-    <!--<div class="row">-->
     <div class="card-columns">
-
-    
         <% userJournals.forEach(function(journal) { %>
-            <!--<div class="col-md-6">-->
-                <div class="card">
-                    <div class="card-header">
-                        Created: <%= journal.created.toDateString() %>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><%= journal.title %></h5>
-                        <p class="card-text">
-                            <blockquote>
-                                <%- journal.description %>
-                            </blockquote>
-                        </p>
-                        <a href="/journals/<%= journal.id %>" class="btn btn-info"><i class="fas fa-newspaper"></i> Open</a>
-                        <a href="/journals/<%= journal.id %>/edit" class="btn btn-info"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="/journals/<%= journal.id %>/delete" class="btn btn-warning"><i class="fas fa-trash-alt"></i> Delete</a>
-                    </div>
-                </div>
-            <!--</div>-->
-        <% }); %>
-        <!--<div class="col-md-6">-->
             <div class="card">
                 <div class="card-header">
-                    Start recording your progress
+                    Created: <%= journal.created.toDateString() %>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Create new journal</h5>
+                    <h5 class="card-title"><%= journal.title %></h5>
                     <p class="card-text">
-                        Journal is not only a blog-like feature to record your progress. It can be linked to your personal calendar, statistics etc. You can share it with selected few or make it public.
+                        <blockquote>
+                            <%- journal.description %>
+                        </blockquote>
                     </p>
-                    <a class="btn btn-info btn-lg" href="/journals/new" role="button"><i class="fas fa-plus-square"></i> Create</a>
+                    <a href="/journals/<%= journal.id %>" class="btn btn-info"><i class="fas fa-newspaper"></i> Open</a>
+                    <a href="/journals/<%= journal.id %>/edit" class="btn btn-info"><i class="fas fa-edit"></i> Edit</a>
+                    <a href="/journals/<%= journal.id %>/delete" class="btn btn-warning"><i class="fas fa-trash-alt"></i> Delete</a>
                 </div>
             </div>
-        <!--</div>-->
+        <% }); %>
+        <div></div>
+        <div class="card">
+            <div class="card-header">
+                Start recording your progress
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Create new journal</h5>
+                <p class="card-text">
+                    Journal is not only a blog-like feature to record your progress. It can be linked to your personal calendar, statistics etc. You can share it with selected few or make it public.
+                </p>
+                <a class="btn btn-info btn-lg" href="/journals/new" role="button"><i class="fas fa-plus-square"></i> Create</a>
+            </div>
+        </div>
     </div>
 </div>
 
