@@ -11,6 +11,7 @@ router.get("/", middleware.isLoggedIn, function(req, res) {
                 console.log(err);
                 res.redirect("/");
             } else {
+                console.log(userJournals);
                 res.render("journal/journal", {userJournals : userJournals});
             }
         });

@@ -32,6 +32,8 @@
             integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" 
             crossorigin="anonymous">
         </script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script src="/scripts/textarea.js"></script>
         <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
     </head>
     <body>
@@ -48,23 +50,23 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/journals">Home<span class="sr-only"></span></a>
+                <a class="nav-link" href="/journals">Journals<span class="sr-only"></span></a>
               </li>
             </ul>
             <ul class="navbar-nav ml-auto">
               <% if(!currentUser) { %>
                 <li class="nav-item">
-                  <a class="nav-link" href="/login">Login</a>
+                  <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/register">Register</a>
+                  <a class="nav-link" href="/register"><i class="fas fa-user-plus"></i> Register</a>
                 </li>
               <% } else { %>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Signed in as <%= currentUser.username %></a>
+                  <a class="nav-link" href="#"><i class="fas fa-user"></i> Signed in as <strong><%= currentUser.username %></strong></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/logout">Logout</a>
+                  <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
               <% } %>
             </ul>
