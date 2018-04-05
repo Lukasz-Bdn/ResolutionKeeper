@@ -2,10 +2,12 @@
 
 <div class="container">
 
-    <div class="row">
+    <!--<div class="row">-->
+    <div class="card-columns">
+
     
         <% userJournals.forEach(function(journal) { %>
-            <div class="col-md-6">
+            <!--<div class="col-md-6">-->
                 <div class="card">
                     <div class="card-header">
                         Created: <%= journal.created.toDateString() %>
@@ -22,9 +24,9 @@
                         <a href="/journals/<%= journal.id %>/delete" class="btn btn-warning"><i class="fas fa-trash-alt"></i> Delete</a>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
         <% }); %>
-        <div class="col-md-6">
+        <!--<div class="col-md-6">-->
             <div class="card">
                 <div class="card-header">
                     Start recording your progress
@@ -37,7 +39,7 @@
                     <a class="btn btn-info btn-lg" href="/journals/new" role="button"><i class="fas fa-plus-square"></i> Create</a>
                 </div>
             </div>
-        </div>
+        <!--</div>-->
     </div>
 </div>
 

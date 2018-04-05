@@ -34,6 +34,18 @@ div.card {
 }
 
 
+/*Card columns responsiveness */
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
